@@ -1,7 +1,6 @@
 import math
 
 def iya_moses_pizza():
-    # Define pizza options and prices
     pizza_options = {
         1: {"type": "Sapa size", "price": 2500, "slices": 4},
         2: {"type": "Small Money", "price": 2900, "slices": 6},
@@ -13,10 +12,8 @@ def iya_moses_pizza():
     print("          WELCOME TO IYA MOSES PIZZA JOINT")
     print("::::::::::::::::::::::::::::::::::::::::::::::::::")
 
-    # Get the number of guests
     no_of_guests = int(input("How many number of people are attending your party? "))
 
-    # Display menu and get pizza choice
     print("""
 What type of pizza would you like to buy:
     1. Sapa size
@@ -30,19 +27,16 @@ What type of pizza would you like to buy:
         print("We could not find a match for your search, try using another keyword...")
         return
 
-    # Retrieve selected pizza details
-    selected_pizza = pizza_options[pizza_choice]
+      selected_pizza = pizza_options[pizza_choice]
     pizza_type = selected_pizza["type"]
     price_per_box = selected_pizza["price"]
     slices_per_box = selected_pizza["slices"]
 
-    # Calculate order details
-    total_boxes = math.ceil(no_of_guests / slices_per_box)
+        total_boxes = math.ceil(no_of_guests / slices_per_box)
     total_slices = total_boxes * slices_per_box
     leftover = total_slices - no_of_guests
     total_price = total_boxes * price_per_box
-
-    # Display order summary
+    
     print("____________________::::::::::::::_____________________")
     print("Order summary:")
     print(f"Pizza Type: {pizza_type}")
