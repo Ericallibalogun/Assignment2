@@ -1,7 +1,6 @@
 import datetime
 
 def get_date(prompt):
-    """Helper function to validate and return date input"""
     while True:
         date_input = input(prompt)
         try:
