@@ -35,7 +35,7 @@ def main():
         match choice:
             case 1:
 
-                date = input("Please enter the date in the format YYYY-MM-DD: ")
+                date = get_date("Please enter the date in the format YYYY-MM-DD: ")
                 description = input("Please the description: ")
 
                 while True:
