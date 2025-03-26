@@ -10,11 +10,10 @@ def display_menu():
 	5. Exit
 	''')
 
-def add_task(tasks):
-	task = input("Kindly enter the task here: ")
-
+def add_task(tasks, task):
 	tasks.append({
-		'task': task
+		'task': task,
+		'completed' : False
 	})
 	print("Task added")
 	
@@ -23,13 +22,12 @@ def view_tasks(tasks):
 	print("-" * 48)
 	for index,task in enumerate(tasks, 1):
 		print(f"Task {index}:")
-		print(f" [ ]      {task['task']}")
+		print(f" [{'x' if task['completed'] else ' '}]      {task['task']}")
 		print("-" * 48)
 
 def mark_complete(tasks):
     print("\nCurrent Tasks:")
     for index, task in enumerate(tasks, 1):
-        # Fixed indentation and spacing in checkbox
         print(f"{index}: [{'x' if task['completed'] else ' '}] {task['task']}")
     
     try:
@@ -42,7 +40,24 @@ def mark_complete(tasks):
     except ValueError:
         print("Please enter a valid number")
 
+def delete_a_task(tasks):
+	print("\nCurrent Tasks:")
+	for index, task in enumerate(tasks, 1):
+		print(f"{index}: [{'x' if task['completed'] else ' '}] {task['task']}")
+	try:
+		task_number = int(input("\nEnter the number of the task to delete: "))
+		if 1 <= task_number <= len(tasks):
+			deleted_task = tasks.pop(task_number - 1)
+			print(f"Task {task_number} '{deleted_task['task']}' deleted successfully.")
+		else:
+			print("Invalid task number. Please try again.")
+	except ValueError:
+		print("Please enter a valid number.")
 
+
+	
+	
+	
 def main():
 	tasks = []
 	menu_heading()
@@ -58,11 +73,14 @@ def main():
 
 		match choice:
 			case 1:
-				add_task(tasks)
+				task = input("Kindly enter the task here: ")
+				add_task(tasks, task)
 			case 2:
 				view_tasks(tasks)
 			case 3:
 				mark_complete(tasks)
+			case 4:
+				delete_a_task(tasks)
 			case 5: 
 				print("Thanks for using our app")
 				break
